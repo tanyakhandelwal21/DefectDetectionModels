@@ -1,0 +1,9 @@
+Train positive : 43321
+Train total : 100000
+Train buggy rate : 0.43321
+Valid positive : 10850
+Valid total : 25000
+Valid buggy rate : 0.434
+Test positive : 11028
+Test total : 25000
+Test buggy rate : 0.44112
