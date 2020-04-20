@@ -8,6 +8,7 @@ from tensorflow.keras.preprocessing.sequence import pad_sequences
 # Calculating buggy rate for training
 with open('data/y_train.pickle', 'rb') as handle:
 	Y_train = pickle.load(handle);
+Y_train = Y_train[:50000];
 
 train_total = len(Y_train);
 train_positive = 0;

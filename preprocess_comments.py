@@ -31,12 +31,12 @@ X_valid, Y_valid = reshape_instances(valid)
 
 # Use a subset of data to save time
 # You can change it in Part(III) to improve your result
-X_train = X_train[:1000000]
-Y_train = Y_train[:1000000]
-X_test = X_test[:250000]
-Y_test = Y_test[:250000]
-X_valid = X_valid[:250000]
-Y_valid = Y_valid[:250000]
+X_train = X_train[:100000]
+Y_train = Y_train[:100000]
+X_test = X_test[:25000]
+Y_test = Y_test[:25000]
+X_valid = X_valid[:25000]
+Y_valid = Y_valid[:25000]
 
 # Build vocabulary and encoder from the training instances
 vocabulary_set = set()

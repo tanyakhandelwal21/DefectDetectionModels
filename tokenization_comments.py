@@ -13,8 +13,8 @@ with open('/homes/cs408/project-3/data/test.pickle', 'rb') as handle:
 
 # Tokenize and shape our input:
 def custom_tokenize(string):
-#    if "//" in string:
-#        return []
+    if "//" in string:
+        return []
     try:
         tokens = list(javalang.tokenizer.tokenize(string))
     except:
