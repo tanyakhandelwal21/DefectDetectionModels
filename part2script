@@ -1,0 +1,38 @@
+#!/bin/sh
+
+echo "" > output
+echo "----------Using initial ATT model----------\n" >> output
+
+echo $(date)": Start of tokenization\n" >> output
+python tokenization_p2.py
+echo $(date)": End of tokenization\n" >> output
+
+echo $(date)": Start of preprocessing\n" >> output
+python preprocess_p2.py
+echo $(date)": End of preprocessing\n" >> output
+
+echo $(date)": Start of training and testing\n" >> output
+python ATT_train_and_test_p2.py
+echo $(date)": End of training and testing\n" >> output
+echo "----------------RESULTS-------------------" >> output
+python evaluate.py
+echo "------------------------------------------" >> output
+mv auc_model.png auc_model_ATT_model.png
+
+echo "----------Removing comments----------\n" >> output
+
+echo $(date)": Start of tokenization\n" >> output
+python tokenization_comments.py
+echo $(date)": End of tokenization\n" >> output
+
+echo $(date)": Start of preprocessing\n" >> output
+python preprocess_comments.py
+echo $(date)": End of preprocessing\n" >> output
+
+echo $(date)": Start of training and testing\n" >> output
+python ATT_train_and_test_comments.py
+echo $(date)": End of training and testing\n" >> output
+echo "---------------RESULTS---------------------" >> output
+python evaluate.py
+echo "-------------------------------------------" >> output
+mv auc_model.png auc_model_nocomments_p3.png
