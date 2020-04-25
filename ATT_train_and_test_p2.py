@@ -118,11 +118,25 @@ class AttLayer(Layer):
         return (input_shape[0], input_shape[-1])
 
 inputs = Input(shape=(None,), dtype='int32')
+#2 layers
 embedding = Embedding(encoder.vocab_size, 128)(inputs)
 l_lstm = Bidirectional(LSTM(64, return_sequences=True))(embedding)
 att = Attention()([embedding,l_lstm])
-l_lstm2 = Bidirectional(LSTM(64))(embedding)
-preds = Dense(1, activation='sigmoid')(l_lstm2)
+l_lstm2 = Bidirectional(LSTM(64))(att)
+
+#4 layers
+att2 = Attention()([att,l_lstm2])
+l_lstm3 = Bidirectional(LSTM(64))(att2)
+att3 = Attention()([att2,l_lstm3])
+l_lstm4 = Bidirectional(LSTM(64))(att3)
+
+#6 layers
+att4 = Attention()([att3,l_lstm4])
+l_lstm5 = Bidirectional(LSTM(64))(att4)
+att5 = Attention()([att4,l_lstm5])
+l_lstm6 = Bidirectional(LSTM(64))(att5)
+
+preds = Dense(1, activation='sigmoid')(l_lstm6)
 model = Model(inputs, preds)
 
 #model = tf.keras.Sequential([
